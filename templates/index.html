@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="Valadis Mastoras" content="colorlib.com">
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{{url_for('static', filename='js/main.js')}}"></script>
+       <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+   
+   <div id="myModal" class="modal fade">
+      <div class="modal-dialog">
+           <div class="modal-content">
+                <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal">×</button>
+                     <h2 class="modal-title">About SemiGramEx</h2>
+                </div>
+                <div class="modal-body">
+                     <p> SemiGramEx is a semi-automatic generation system that aims on helping second language teachers, during their duties.</p>
+                    <p> More specifically, the user can select an initial resource of authentic text, based on which the exercise generation process will happen. In addition, a number of generation parameters have also been incorporated, such as a difficulty level, an exercise type and a teaching goal to be taught of.</p>
+                    <p> or the moment, SemiGramEx supports only English and it allows for three types of exercises, those being Fill-in-the-blank grammar exercises, Find-the-mistakes and Multiple-choice grammar exercises. Eventually, the teaching goal supported for the moment targets the learning of Verb Tenses. A more thorough description of each component is presented at the <i>How to use</i> section.</p>
+                    <p> SemiGramEx was created as a part of a second year Master internship, for the Synalp team, at Loria research center. </p>
+                </div>
+           </div>
+      </div>
+   </div>
+   
+    <div id="myModal2" class="modal fade">
+      <div class="modal-dialog">
+           <div class="modal-content">
+                <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal">×</button>
+                     <h2 class="modal-title">How to use</h2>
+                </div>
+                <div class="modal-body">
+					<div class="modal-component">
+						 <h3>Input resource</h3>
+						 <p> SemiGramEx comes with two pre-existing text resources, that act as a generation basis.</p>
+						 <p> The first resource is the <a href="https://simple.wikipedia.org/wiki/Main_Page" target="_blank">Simple Wikipedia</a>, a version of the Wikipedia database that
+						 targets children, young adults and adults who are learning English.</p>
+						 <p> The second resource is the <a href="https://www.english-corpora.org/bnc/" target="_blank">British National Corpus (BNC)</a>, a collection of texts from a wide range of genres (e.g. spoken, fiction,
+						 magazines, newspapers, and academic), created by Oxford University press in the 1980s - early 1990s. Note that the BNC corpus for the
+                         moment is <i>experimental</i> and therefore many incosistencies might exist on the generated results. </p>
+						 <p>The language being incorporated in every generated exercise instance, exists in one of those two corpora.</p>
+					 </div>
+					<div class="modal-component">
+                        <h3>Number of exercise instances</h3>
+						<p> The allowed numbers of exercise instances are predefined so that the generation execution might be minimized.</p>
+						<p> Given a teaching goal and a number of exercise instances, SemiGramEx will generate half of the number of instances for the first verb tense existing in the teaching goal and the other half for the second verb tense existing in the teaching goal. (see also at the "Grammar exercises" section for more information).</p>
+						<p> For example, a number of 20 exercise instances and a Past Simple/Progressive teaching goal, will generate 10 exercises for the Past Simple tense and 10 exercises for the Past Progressive tense.</p>
+					</div>
+					<div class="modal-component">
+                        <h3>Difficulty level</h3>
+						<p> The difficulty level is based on the language being used in the exercises (meaning the language that exists on the sentences that are retrieved from the input resources, and are to be converted) and not on the exercise type or any other, pedagogically related aspect. </p>
+						<p> The difficulty classification results do not aim to be directly demonstrated on a second language learner. On the contrary, this classification approach was implemented upon the assumption that a teacher would interfere and evaluate the validity of the genrated results before demonstrating them on a learner.</p>
+					</div>
+                    <div class="modal-component">
+				    <h3>Grammar exercises</h3>
+					<h4>Exercise type</h4>
+                    <p> The <i>Fill-in-the-blank</i> exercise, is a usual exercise type where the linguistic construction to be taught of, is being blanked and
+					the lemma form is is demonstrated as a hint to the learner. Eg: <i> Thomas _____ (go) to the cinema yesterday.</i> </p>
+					<p> The <i>Find-the-mistake</i> exercise, is an exercise type where well-formed sentences are converted into ill-formed ones, with relevant mistakes. The learner should eventually identify and correct the mistakes or even just identify that a mistake exists in a sentence. For example, the sentence: <i>Thomas was going to the cinema yesterday.</i> could
+                    be an ill-formed version of the sentence: <i>Thomas went to the cinema yesterday.</i></p>
+                    <p> The <i>Multiple-choice</i> exercise, is an exercise type similar with the Fill-in-the-blank one. The main difference, is that instead of
+                    presenting the lemma form as a hint for the learner, the solution is demonstrated as an option to the learner, along with a set of wrong options.</p>
+					<h4>Teaching goal</h4>
+                    <p> SemiGrammEx targets for the moment Verb Tenses learning. More specifically, three groups of Verb Tenses are provided, those being the <i>Present Simple</i>
+                        and <i>Present Progressive</i> group, the <i>Past Simple</i> and <i>Past Progressive</i> group and the <i>Present Perfect</i> and <i>Past perfect</i> group. Those Verb Tenses were chosen as the most suitable
+                    learning candidates, given the available input resources. </p>
+                    <p> Each exercise type, targets those six Verb Tenses in groups, meaning that half of the generated exercise types would concern the first verb tense existing in a target group, and the other half, the other verb tense in the same group. Eg: <i>for a Fill-in-the-blank</i> exercise type, for the <i>Present Simple/Progressive</i> group and a number of 10 exercise instances to be generated, 5 FIB exercise instances would be generated for the Present Simple tense and 5 for the Present Progressive. </p>
+                    </div>
+                    <div class="modal-component">
+					<h3>Extra options</h3>
+					<h4>Display solutions</h4>
+                    <p> The selection of that option will demonstrated the generated exercise, as well as the solutions of the final generated exercises. </p>
+					<h4>Highlight topic-sensitive words</h4>
+					<p> With this option, possible words that might be considered as inappropriate for educational purposes, are indicated
+					by SemiGramEx in the generated exercises.</p>
+					<p> Such words are mostly related to offensive use of language or other relevant sensitive topics.</p>
+					<p> The provided indications should not be considered as exhaustive. In any case, the final results should be revised.</p>
+					<h4>Shuffle exercise instances</h4>
+					<p> If this option remains unchecked, the generated exercise instances will be sorted based on verb tense. For example, in a scenario of 20 exercise
+                        instances, for Present Simple/Progressive tense and the <i>shuffle option</i> unchecked, SemiGrammEx will present 10 exercise instances of Present Simple
+                    and then 10 exercise instances of Present Progressive. In case the shuffle option is selected, those 20 instances will be randomly mixed. </p>
+                    <p> That option aims on providing either an option of isolated teaching for each verb tense, or a ready-made exercise for a mutual teaching of both of the target verb tenses.</p>
+                    </div>
+                </div>
+           </div>
+      </div>
+   </div>
+
+   <form action = "{{url_for('exercise_generation')}}" method = "post" target="_blank">
+       <div class="top_navbar">
+           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="navbar_main">
+                  <div class="logo-container">
+                      <div class="logo-holder logo-10">
+                          <h3>SemiGramEx</h3>
+                          <p>&nbsp;</p>
+                      </div>
+                  </div>
+                 <div class="navbar-container">
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                          <li class="nav-item active">
+                            <a class="nav-link" href="#">Exercises generator<span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="nav-item">  
+								<a class="nav-link" data-target="#myModal" role="button" class="btn btn-warning" data-toggle="modal">About SemiGramEx</a>
+                          </li>
+						  <li class="nav-item">  
+								<a class="nav-link" data-target="#myModal2" role="button" class="btn btn-warning" data-toggle="modal">How to use</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('semigramex_documentation')}}" target="_blank">Documentation</a>
+                          </li>                       
+                        </ul>
+                      </div>
+                  </div>
+              </div>				  
+            </nav>
+       </div>
+	  	   
+        <div class="main_content">
+            <div class="component_block">
+                <div class="component_header">Input resource</div>
+                <div class="wrapper">
+                    <input type="radio" name="select_corpus" id="wiki_corpus" value="wikipedia" checked>
+                    <input type="radio" name="select_corpus" id="bnc_corpus" value="bnc">
+                    <label for="wiki_corpus" class="option wiki_corpus">
+                        <span>Wikipedia</span>
+                    </label>
+                    <label for="bnc_corpus" class="option bnc_corpus">
+                            <span>BNC (experimental)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="component_block">
+                <div class="component_header">Number of exercise instances</div>
+                <div class="wrapper">
+                    <input type="radio" name="select_instances" id="ten_instances" value=10 checked>
+                    <input type="radio" name="select_instances" id="twenty_instances" value=20>
+                    <input type="radio" name="select_instances" id="forty_instances" value=40>
+                    <label for="ten_instances" class="option ten_instances">
+                        <span>10</span>
+                    </label>
+                    <label for="twenty_instances" class="option twenty_instances">
+                        <span>20</span>
+                    </label>
+                    <label for="forty_instances" class="option forty_instances">
+                        <span>40</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="component_block">
+                <div class="component_header">Difficulty level</div>
+                <div id="test" class="wrapper">
+                    <input type="radio" name="select_difficulty" id="beg_difficulty" value="A" checked>
+                    <input type="radio" name="select_difficulty" id="inter_difficulty" value="B">
+                    <input type="radio" name="select_difficulty" id="adv_difficulty" value="C">
+                    <label for="beg_difficulty" class="option beg_difficulty">
+                        <span>Begginer</span>
+                    </label>
+                    <label for="inter_difficulty" class="option inter_difficulty">
+                        <span>Intermediate</span>
+                    </label>
+                    <label for="adv_difficulty" class="option adv_difficulty">
+                        <span>Advance</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="component_block">
+                <div class="component_header">Grammar exercises</div>
+                <div class="wrapper">
+
+                    <div class="grammar_wrapper">
+                        <div class="grammar_header">Exercise type</div>
+                         <select id="exerciseType" class="grammar_droplist" data-trigger="" name="exerciseType">
+                            <option value="fib" placeholder>Fill-in-the-blank</option>
+                            <option value="mistakes">Find-the-mistake</option>
+                             <option value="multiple">Multiple-choice</option>
+                        </select>
+                    </div>
+                    <div class="grammar_wrapper">
+                        <div class="grammar_header">Teaching goal</div>
+                        <select id="teachGoal" class="grammar_droplist" data-trigger="" name="teachGoal">
+                            <option value="present-simple-progr" placeholder>Present Simple/Progressive</option>
+                            <option value="past-simple-progr">Past Simple/Progressive</option>
+                            <option value="present-past-perfect">Present/Past Perfect</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component_block">
+                <div class="component_header">Extra options</div>
+                <div id="extra_options_wrap" class="wrapper">
+                    <div class="options_wrapper">
+                      <input class ="extra_options" type="checkbox" id="solutions" name="extra_checkbox" value="solution">
+                      <label class ="extra_options" for="solutions"> Display solutions</label><br>
+                      <input class ="extra_options" type="checkbox" id="profanity" name="extra_checkbox" value="profanity">
+                      <label class ="extra_options" for="profanity"> Highlight topic-sensitive words</label><br>
+                    </div>
+                    <div id="shuffle_option_wrap" class="options_wrapper">
+                      <input class ="extra_options" type="checkbox" id="shuffle" name="extra_checkbox" value="shuffle">
+                      <label class ="extra_options" for="shuffle"> Shuffle exercise instances</label><br>
+                    </div>
+                </div>
+            </div>
+
+           <input id="submit" type="submit" value="Generate exercises"/>
+       </div>
+    </form>
+
+    <div class="footer-clean">
+        <footer>
+            <div class="container" style="text-align: center;">
+                <div class="row justify-content-center">
+                    <div class=" col-lg-3 col-sm-4 col-md-3 item">
+                        <h3>Institutions involved</h3>
+                        <ul>
+                            <li><a href="https://www.loria.fr/en/" target="_blank">LORIA</a></li>
+                            <li><a href="https://www.univ-lorraine.fr/en/home/" target="_blank">University of Lorraine</a></li>
+                            <li><a href="https://idmc.univ-lorraine.fr/" target="_blank">IDMC</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-4 col-md-3 item">
+                        <h3>Research team</h3>
+                        <ul>
+                            <li><a href="https://synalp.loria.fr/" target="_blank">The Synalp team</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 item social">               
+						<img src="{{url_for('static',filename = 'img/loria.jpg')}}" alt="LORIA Research Center">
+                    </div>
+                </div>
+            </div>
+			<div class="copyright"><p>LORIA research center © 2021</p></div>
+        </footer>
+    </div>
+   </body>
+</html>
+
