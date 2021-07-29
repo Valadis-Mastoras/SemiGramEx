@@ -66,9 +66,9 @@
 
 * SemiGramEx is a semi-automatic generation system that aims on helping second language teachers, during their duties.
 
-* More specifically, the user can select an initial resource of authentic text, based on which the exercises' generation process will happen. In addition, a number of generation parameters have also been incorporated for more diverse results, such as the proficiency level of the target learner, along with a specific exercise type to be taught of and a teaching goal.
+* More specifically, the user can select an initial resource of authentic text, based on which the exercise generation process will happen. In addition, a number of generation parameters have also been incorporated, such as a difficulty level, an exercise type and a teaching goal to be taught of.
 
-* For the moment, SemiGramEx only supports english and it allows for three types of exercises, those being Fill-in-the-blank grammar exercises, Find-the-mistakes and Multiple-choice grammar exercises. Eventually, the teaching goal supported for the moment targets the learning of Verb Tenses. A more thorough description of each component is presented at the How to use section.
+* For the moment, SemiGramEx supports only English and it allows for three types of exercises, those being Fill-in-the-blank grammar exercises, Find-the-mistakes and Multiple-choice grammar exercises. Eventually, the teaching goal supported for the moment targets the learning of Verb Tenses. A more thorough description of each component is presented at the How to use section.
 
 * SemiGramEx was created as a part of a second year Master internship, for the Synalp team, at Loria research center.
 
@@ -115,7 +115,7 @@
 ## Usage
 
 * The project is not yet available online, so it should be downloaded to be used. 
-* NOTE: Due to size limitations, only a small subset of the input resource are provided. For the whole input corpora, please contact with the given email.
+* NOTE: Due to size limitations, the input resources are not provided. To acquire them, please contact with the creator (email at the end).
 
 1. Open a python terminal and move to the directory where the SemiGrammEx folder is saved.
 
@@ -139,29 +139,29 @@
 
 ### Input resource
 
-* SemiGramEx comes with two existing text resources, based on which the exercises' generation process can take place.
+* SemiGramEx comes with two pre-existing text resources, that act as a generation basis.
 
 * The first resource is the Simple Wikipedia, a version of the Wikipedia database that targets children, young adults and adults who are learning English.
 
 * The second resource is the British National Corpus (BNC), a collection of texts from a wide range of genres (e.g. spoken, fiction, magazines, newspapers, and academic), created by Oxford University press in the 1980s - early 1990s. Note that the BNC corpus for the moment is experimental and therefore many incosistencies might exist on the generated results.
 
-* Every generated exercise instance, contains a text passage with language being used in one of those two corpora.
+* The language being incorporated in every generated exercise instance, exists in one of those two corpora.
 
 
 ### Number of exercise instances
 
-* The number of exercise instances is predefined for a faster generation execution.
+* The allowed numbers of exercise instances are predefined so that the generation execution might be minimized.
 
-* Given a teaching goal and a number of exercise instances, SemiGramEx will generate half of the instances number for the first teaching goal and the other half for the second teaching goal. (see also at the "Grammar exercises" section).
+* Given a teaching goal and a number of exercise instances, SemiGramEx will generate half of the number of instances for the first verb tense existing in the teaching goal and the other half for the second verb tense existing in the teaching goal. (see also at the "Grammar exercises" section for more information).
 
 * For example, a number of 20 exercise instances and a Past Simple/Progressive teaching goal, will generate 10 exercises for the Past Simple tense and 10 exercises for the Past Progressive tense.
 
 
 ### Difficulty level
 
-* The difficulty level is calculated on the language being used on the exercises (ie the retrieved sentences from the input resources) and not on the type of the exercises or any other, strictly pedagogically related aspect.
+* The difficulty level is based on the language being used in the exercises (meaning the language that exists on the sentences that are retrieved from the input resources, and are to be converted) and not on the exercise type or any other, pedagogically related aspect.
 
-* The difficulty classification results do not aim to be self-contained and ready-made for a second language learner directly. On the contrary, this classification approach was implemented upon the assumption that a teacher would interfere and evaluate the validity of the genrated results.
+* The difficulty classification results do not aim to be directly demonstrated on a second language learner. On the contrary, this classification approach was implemented upon the assumption that a teacher would interfere and evaluate the validity of the genrated results before demonstrating them on a learner.
 
 
 ### Grammar exercises
@@ -169,18 +169,18 @@
 
 #### Exercise type
 
-* The Fill-in-the-blank exercise, is a usual exercise type where the target linguistic construction to be taught of, is being blanked and the lemma form is provided instead. Eg: Thomas _____ (go) to the cinema yesterday.
+* The Fill-in-the-blank exercise, is a usual exercise type where the linguistic construction to be taught of, is being blanked and the lemma form is is demonstrated as a hint to the learner. Eg: Thomas _____ (go) to the cinema yesterday.
 
-* The Find-the-mistake exercise, is an exercise type where the target linguistic construction to be taught of, is ill-injected with a relevant mistake. The learner should eventually identify and correct the mistakes or even just identify that a mistake exists in a sentence. For example, the sentence: Thomas was going to the cinema yesterday. could be a mistake-injected version of the sentence: Thomas went to the cinema yesterday.
+* The Find-the-mistake exercise, is an exercise type where well-formed sentences are converted into ill-formed ones, with relevant mistakes. The learner should eventually identify and correct the mistakes or even just identify that a mistake exists in a sentence. For example, the sentence: Thomas was going to the cinema yesterday. could be an ill-formed version of the sentence: Thomas went to the cinema yesterday.
 
-* The Multiple-choice exercise, is an exercise type similar with the Fill-in-the-blank one. The main difference, is that instead of presenting the lemma form as a hint for the learner, the solution of the blanked target is presented along with a number of possible wrong choices (distractors).
+* The Multiple-choice exercise, is an exercise type similar with the Fill-in-the-blank one. The main difference, is that instead of presenting the lemma form as a hint for the learner, the solution is demonstrated as an option to the learner, along with a set of wrong options.
 
 
 #### Teaching goal
 
-* SemiGrammEx targets for the moment Verb Tenses learning. More specifically, three pairs of Verb Tenses are provided, those being Present Simple and Present Progressive, Past Simple and Past Progressive, Present Perfect and Past perfect. Those Verb Tenses were chosen as the most suitable learning candidates, given the available input resources.
+* SemiGrammEx targets for the moment Verb Tenses learning. More specifically, three groups of Verb Tenses are provided, those being the Present Simple and Present Progressive group, the Past Simple and Past Progressive group and the Present Perfect and Past perfect group. Those Verb Tenses were chosen as the most suitable learning candidates, given the available input resources.
 
-* Each exercise type, targets those six Verb Tenses in pairs. Taking as an example the Present Simple/Progressive tenses pair, a Fill-in-the-blank exercise would generate sentences with a blanked target verb either in Present Simple, either in Present Progressive. Similarly, for the Find-the-mistake and Multiple-choice exercises in the same example, a verb construction in Present Simple would be replaced with the according construction in Present Progressive, presenting in this way either a sentence with a wrong verb tense for the former exercise type, either a sentence with the target verb construction blanked and two options in Present Simple and Present Continuous presented as possible solutions.
+* Each exercise type, targets those six Verb Tenses in groups, meaning that half of the generated exercise types would concern the first verb tense existing in a target group, and the other half, the other verb tense in the same group. Eg: for a Fill-in-the-blank exercise type, for the Present Simple/Progressive group and a number of 10 exercise instances to be generated, 5 FIB exercise instances would be generated for the Present Simple tense and 5 for the Present Progressive.
 
 
 ### Extra options
@@ -188,7 +188,7 @@
 
 #### Display solutions
 
-* The selection of that option will display the generated exercise, but also the solutions of the final generated exercises.
+* The selection of that option will demonstrated the generated exercise, as well as the solutions of the final generated exercises.
 
 
 #### Highlight topic-sensitive words
@@ -197,14 +197,14 @@
 
 * Such words are mostly related to offensive use of language or other relevant sensitive topics.
 
-* The provided indications should not be considered as exhaustive, but rather as indicative. In any case the user should examine the final results on his/her own.
+* The provided indications should not be considered as exhaustive. In any case, the final results should be revised.
 
 
 #### Shuffle exercise instances
 
 * If this option remains unchecked, the generated exercise instances will be sorted based on verb tense. For example, in a scenario of 20 exercise instances, for Present Simple/Progressive tense and the shuffle option unchecked, SemiGrammEx will present 10 exercise instances of Present Simple and then 10 exercise instances of Present Progressive. In case the shuffle option is selected, those 20 instances will be randomly mixed.
 
-* This option aims on providing either an isolated teaching of each verb tense, either a ready-made exercise for both of these tenses simultaneously.
+* That option aims on providing either an option of isolated teaching for each verb tense, or a ready-made exercise for a mutual teaching of both of the target verb tenses.
 
 <!--
 =<!-- ROADMAP --=>
